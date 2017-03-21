@@ -1,0 +1,12 @@
+@import "../../core/_variables";
+
+.TodoView {
+	background: url("../../../images/bg_TodoView.png");
+	width: 100vw;
+	height: 100vh;
+	background-size: auto 100vw;
+	background-position: bottom;
+	background-repeat: no-repeat;
+}
+
+@import "todo";

@@ -1,0 +1,16 @@
+header {
+	height: 3.2rem;
+	width: 100vw;
+	display: flex;
+	padding-left: 33vw;
+	align-items: center;
+	h1, nav {
+		width:30vw;
+		margin: 0 1.5vw;
+	}
+	h1 {
+		text-align: center;
+	}
+}
+
+@import "headerNav";

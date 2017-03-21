@@ -1,0 +1,18 @@
+nav {
+	height: 100%;
+	padding: 0 0.8rem;
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row-reverse;
+	button {
+		width: 2.4rem;
+		background-color: initial;
+		border: solid 2px #fff;
+		fill: none;
+		margin: 0.4rem 1.6rem 0.4rem 0;
+		transition: all .3s ease-in-out;
+	}
+	button:hover {
+		background-color: #fff;
+	}
+}

@@ -1,32 +1,27 @@
 @import "fonts";
 
+@import "core/normalize";
+@import "core/variables";
+@import "core/typography";
+
+@import "components/header/header";
+
+
 html {
 	font-size: 62.5%;
-	body {
-		margin:0;
-		padding:0;
-		background-image: url("../images/bg_carbon.jpg");
-		background-size: 100vh auto;
-		background-position: top;
-		background-repeat: repeat no-repeat;
-		color: #fff;
-		h1 {
-			font-family: blowbrushregular;
-			font-size: 2.4rem;
-			letter-spacing: 0.2rem;
-			font-weight: 300;
-			margin:0;
-			padding:0;
-		}
-		p {
-			margin:0;
-			padding:0;
-			font-size: 1.6rem;
-		}
-	}
+	color: #fff;
+	overflow: hidden;
 }
+
 .content {
 	width: 100vw;
 	height: 100vh;
-	margin: 0
+	background-image: url("../images/bg_carbon.jpg");
+	background-size: 100vh auto;
+	background-position: top;
+	background-repeat: repeat no-repeat;
+
+	p {
+		font-size: 1.6rem;
+	}
 }

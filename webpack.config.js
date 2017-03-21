@@ -19,7 +19,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.scss$/,
-				include: path.join(__dirname, 'src'),
+				include: path.join(__dirname, 'src/assets/scss'),
 				use: [
 					'style-loader',
 					'css-loader',
@@ -46,7 +46,6 @@ module.exports = {
 				loader: 'url-loader',
 				options: {
 					limit: 50000,
-					mimetype: 'application/font-woff',
 					name: './assets/fonts/[name].[ext]'
 				}
 			}
@@ -75,7 +74,7 @@ module.exports = {
 		new ExtractTextPlugin(
 			{
 				filename: 'main.bundle.css',
-				disable: true,
+				disable: false,
 				allChunks: true
 			}
 		),
