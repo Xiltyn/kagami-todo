@@ -37,9 +37,18 @@ module.exports = {
 				loader: 'ts-loader'
 			},
 			{
-				test: /\.(jpg|png)$/,
+				test: /\.(jpg|png|svg)$/,
 				include: path.join(__dirname, 'src'),
 				loader: 'file-loader'
+			},
+			{
+				test: /\.(woff|woff2)$/,
+				loader: 'url-loader',
+				options: {
+					limit: 50000,
+					mimetype: 'application/font-woff',
+					name: './assets/fonts/[name].[ext]'
+				}
 			}
 		]
 	},
