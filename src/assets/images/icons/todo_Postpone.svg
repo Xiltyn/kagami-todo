@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="8px" viewBox="0 0 12 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.1 (35376) - http://www.bohemiancoding.com/sketch -->
+    <title>Postpone</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="8" height="8"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="8" height="8" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ToDo" transform="translate(-268.000000, -137.000000)">
+            <g id="Todo_1" transform="translate(40.000000, 95.000000)">
+                <g id="Postpone" transform="translate(228.000000, 42.000000)">
+                    <use id="Rectangle-2-Copy" stroke="#C8C8C8" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+                    <polygon id="Triangle-Copy" fill="#C8C8C8" points="9.46419856 2.81986998 11.221511 3.9558526 9.46419856 5.09183521"></polygon>
+                    <path d="M4,4 L9,4" id="Line" stroke="#C8C8C8" stroke-linecap="square"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -7,14 +7,8 @@ const todos = [
 	{
 		id: 1,
 		content: 'Take out the trash',
-		time: '8am',
-		status: {
-			todo: true,
-			done: false,
-			inProgress: false,
-			postponed: false,
-			feedback: false
-		},
+		time: 'Tomorrow@8am',
+		status: 'todo',
 		tags: [
 			'home',
 			'annoying'
@@ -25,14 +19,8 @@ const todos = [
 	{
 		id: 2,
 		content: 'Plan out the week',
-		time: '9am',
-		status: {
-			todo: true,
-			done: false,
-			inProgress: false,
-			postponed: false,
-			feedback: false
-		},
+		time: 'Today@9am',
+		status: 'done',
 		tags: [
 			'home',
 			'jobSearch',
@@ -44,14 +32,8 @@ const todos = [
 	{
 		id: 3,
 		content: 'Prepare for the interview',
-		time: '10am',
-		status: {
-			todo: true,
-			done: false,
-			inProgress: false,
-			postponed: false,
-			feedback: false
-		},
+		time: '27 May 2017@10am',
+		status: 'inProgress',
 		tags: [
 			'Job',
 			'stressful'
@@ -113,6 +95,7 @@ export default class TodoView extends React.Component<any, any> {
 							tags={this.returnTags(todo.tags)}
 							category={this.assignCategory(todo.categoryId)}
 							priority={todo.priority}
+							status={todo.status}
 						/>
 				)}
 			</div>
