@@ -1,4 +1,5 @@
 import * as React from 'react';
+import StatusIcon from './StatusIcon';
 
 export default class Todo extends React.Component<any, any> {
 	render() {
@@ -20,9 +21,7 @@ export default class Todo extends React.Component<any, any> {
 					<p className="tags">
 						{this.props.tags}
 					</p>
-					<div className="status">
-						<div className={this.props.status} />
-					</div>
+					<StatusIcon status={this.props.status}/>
 				</div>
 			</div>
 		)

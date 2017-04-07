@@ -77,12 +77,18 @@
 			width: 1.6rem;
 			height: 1.6rem;
 			padding: 0.4rem 0;
+			cursor: pointer;
 			.todo, .done, .inProgress, .postpone, .update {
 				width: 100%;
 				height: 100%;
 				background-size: 100%;
 				background-repeat: no-repeat;
 				background-position: center;
+				-webkit-transition: all .5s ease-out;
+				-moz-transition: all .5s ease-out;
+				-ms-transition: all .5s ease-out;
+				-o-transition: all .5s ease-out;
+				transition: all .5s ease-out;
 			}
 			.todo {
 				background-image: url("../../../images/icons/todo_todo.svg");
