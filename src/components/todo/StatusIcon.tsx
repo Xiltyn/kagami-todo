@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Tooltip from "../global/Tooltip";
 
 export default class StatusIcon extends React.Component<any, any> {
 	constructor() {
@@ -12,7 +13,7 @@ export default class StatusIcon extends React.Component<any, any> {
 		let statuses = ['todo', 'inProgress', 'done', 'update', 'postpone'];
 		let currentStatus = this.state.status;
 		let firstStatus = statuses[0];
-		let lastStatus = statuses[4];
+		let lastStatus = statuses[statuses.length - 1];
 
 		for (var i = 0; i <= statuses.length; i++) {
 			if (currentStatus == lastStatus) {
@@ -25,11 +26,11 @@ export default class StatusIcon extends React.Component<any, any> {
 				})
 			}
 		}
-
 	};
 	public render() {
 		return(
 			<div className="status" onClick={this._toggleStatus}>
+				<Tooltip position="left">{this.state.status}</Tooltip>
 				<div className={this.state.status} />
 			</div>
 		)

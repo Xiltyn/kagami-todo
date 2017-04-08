@@ -2,6 +2,7 @@ import * as React from 'react';
 import Header from '../header/Header';
 import Todo from './Todo';
 import '../../assets/scss/components/todo/TodoView';
+import AddTodo from "./AddTodo";
 
 const todos = [
 	{
@@ -98,6 +99,7 @@ export default class TodoView extends React.Component<any, any> {
 							status={todo.status}
 						/>
 				)}
+				<AddTodo />
 			</div>
 		)
 	}

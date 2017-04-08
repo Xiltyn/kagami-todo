@@ -1,4 +1,4 @@
-.Todo {
+.Todo, .addTodo {
 	margin: 1.6rem 0.8rem 0 0.8rem;
 	width: auto;
 	padding: 0 0.8rem;
@@ -49,7 +49,7 @@
 		.priority {
 			width: 0.4rem;
 			height: 100%;
-			.p1, .p2, .p3 {
+			.p1, .p2, .p3, .neutral {
 				width: 100%;
 				height: 100%;
 			}
@@ -61,6 +61,16 @@
 			}
 			.p3 {
 				background-color: #C8C8C8;
+			}
+			.neutral {
+				background-color: #5f5f5f;
+				transition: all .2s ease-in-out;
+				cursor: pointer;
+			}
+			.neutral:hover {
+				width: 300%;
+				margin-left: -200%;
+				transition: all .2s ease-in-out;
 			}
 		}
 	}
@@ -74,21 +84,23 @@
 			line-height: 2.4rem;
 		}
 		.status {
+			position: relative;
 			width: 1.6rem;
 			height: 1.6rem;
 			padding: 0.4rem 0;
 			cursor: pointer;
+			z-index: 1000;
 			.todo, .done, .inProgress, .postpone, .update {
 				width: 100%;
 				height: 100%;
 				background-size: 100%;
 				background-repeat: no-repeat;
 				background-position: center;
-				-webkit-transition: all .5s ease-out;
-				-moz-transition: all .5s ease-out;
-				-ms-transition: all .5s ease-out;
-				-o-transition: all .5s ease-out;
-				transition: all .5s ease-out;
+				-webkit-transition: background-image .3s ease-out;
+				-moz-transition: background-image .3s ease-out;
+				-ms-transition: background-image .3s ease-out;
+				-o-transition: background-image .3s ease-out;
+				transition: background-image .3s ease-out;
 			}
 			.todo {
 				background-image: url("../../../images/icons/todo_todo.svg");
@@ -104,6 +116,11 @@
 			}
 			.update {
 				background-image: url("../../../images/icons/todo_Update.svg");
+			}
+		}
+		.status:hover {
+			.tooltip {
+				visibility: visible;
 			}
 		}
 	}

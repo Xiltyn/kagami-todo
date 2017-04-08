@@ -21,7 +21,7 @@ export default class Todo extends React.Component<any, any> {
 					<p className="tags">
 						{this.props.tags}
 					</p>
-					<StatusIcon status={this.props.status}/>
+					<StatusIcon status={this.props.status} />
 				</div>
 			</div>
 		)
