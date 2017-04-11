@@ -3,6 +3,7 @@ import Header from '../header/Header';
 import Todo from './Todo';
 import '../../assets/scss/components/todo/TodoView';
 import AddTodo from "./AddTodo";
+import BlobsAnimation from "../global/BlobsAnimation";
 
 const todos = [
 	{
@@ -100,6 +101,7 @@ export default class TodoView extends React.Component<any, any> {
 						/>
 				)}
 				<AddTodo />
+				<BlobsAnimation/>
 			</div>
 		)
 	}

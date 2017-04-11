@@ -1,0 +1,38 @@
+.blobs {
+  $left: 30%;
+  filter: url('#goo');
+  position: absolute;
+  height: 5rem;
+  top: 60%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  .blob {
+    position: absolute;
+    background: #e97b7a;
+    left: $left;
+    width: 5rem;
+    height: 5rem;
+    line-height: 5rem;
+    text-align: center;
+    color: white;
+    font-size: 3.2rem;
+    border-radius: 100%;
+    margin-left: -2.5rem;
+    transition: all .35s cubic-bezier(.93,.29,.07,.7);
+  }
+  &:hover {
+    .blob:nth-of-type(2) {
+      left: $left + 15;
+    }
+    .blob:nth-of-type(3) {
+      left: $left + 30;
+    }
+    .blob:nth-of-type(4) {
+      left: $left + 45;
+    }
+  }
+  svg {
+    pointer-events: none;
+  }
+}
