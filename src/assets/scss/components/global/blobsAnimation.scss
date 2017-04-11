@@ -3,23 +3,30 @@
   filter: url('#goo');
   position: absolute;
   height: 5rem;
-  top: 60%;
+  top: 85%;
   left: 0;
   bottom: 0;
   right: 0;
   .blob {
     position: absolute;
-    background: #e97b7a;
     left: $left;
     width: 5rem;
     height: 5rem;
+    margin-left: -2.5rem;
+    border-radius: 100%;
+    color: #fff;
+    font-size: 3.2rem;
     line-height: 5rem;
     text-align: center;
-    color: white;
-    font-size: 3.2rem;
-    border-radius: 100%;
-    margin-left: -2.5rem;
+    cursor: pointer;
+    background: #e97b7a;
     transition: all .35s cubic-bezier(.93,.29,.07,.7);
+    span {
+      user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-user-select: none;
+    }
   }
   &:hover {
     .blob:nth-of-type(2) {

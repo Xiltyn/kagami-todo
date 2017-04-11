@@ -4,7 +4,9 @@ export default class Blob extends React.Component<any, any> {
     render() {
         return(
             <div className="blob">
-                {this.props.children}
+                <span unselectable={true}>
+                    {this.props.children}
+                </span>
             </div>
         )
     }
