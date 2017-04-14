@@ -125,3 +125,33 @@
 		}
 	}
 }
+
+.addTodo {
+  opacity: .4;
+  transition: opacity .3s ease-out;
+  .box {
+    position: relative;
+    border: dashed .4rem #fff;
+    cursor: pointer;
+    .addIcon {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -3.2rem;
+      height: 6.4rem;
+      width: 6.4rem;
+      font-family: $fontBit;
+      font-size: 4.8rem;
+      line-height: 6.4rem;
+      text-align: center;
+      user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-user-select: none;
+      pointer-events: none;
+    }
+  }
+}
+.addTodo:hover {
+  opacity: 1;
+}
