@@ -1,5 +1,5 @@
 import * as React from 'react';
-import TodoView from './todo/TodoView'
+import TodoView from './todo/TodoView';
 
 export default class Content extends React.Component <any, any> {
 	public render() {
