@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "webpack-dev-server",
-    "dist": "npm run clean && webpack -p",
-    "clean": "rimraf ./dist/*"
+    "dev": "node server",
+    "build": "set NODE_ENV=production && webpack -p --config webpack.production.config.js"
   },
   "repository": {
     "type": "git",
@@ -40,8 +39,11 @@
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
+    "express": "^4.15.2",
     "graphql": "^0.9.3",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   }
 }
+
+

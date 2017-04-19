@@ -1,14 +1,23 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports = {
-	entry: './src/app.tsx',
+const nodeModulesPath = path.resolve(__dirname, 'node_modules');
+const devPath = path.resolve(__dirname, 'dev');
+const mainPath = path.resolve(__dirname, 'src', 'app.tsx');
+
+const config = {
+    devtool: 'eval',
+    entry: [
+        'webpack/hot/dev-server',
+        'webpack-dev-server/client?http://localhost:8080',
+        mainPath
+    ],
 	output: {
-		path: path.resolve(__dirname, "dist"),
-		filename: './app.bundle.js'
-	},
+		path: devPath,
+		filename: './app.bundle.js',
+        publicPath: "/dev/"
+    },
 	resolve: {
 		extensions: [".ts", ".tsx", ".js", ".css", ".scss", ".jpg", ".png"],
 		alias: {
@@ -28,12 +37,12 @@ module.exports = {
 			},
 			{
 				test: /\.js$/,
-				exclude: /node_modules/,
+				exclude: nodeModulesPath,
 				use: 'babel-loader'
 			},
 			{
 				test: /\.tsx$/,
-				exclude: /node_modules/,
+				exclude: nodeModulesPath,
 				loader: 'ts-loader'
 			},
 			{
@@ -51,19 +60,11 @@ module.exports = {
 			}
 		]
 	},
-	devServer: {
-		contentBase: path.join(__dirname, "dist"),
-		compress: true,
-		port: 3000,
-		stats: 'minimal',
-		hot: true,
-		open: true
-	},
 	plugins: [
 		new HtmlWebpackPlugin(
 			{
 				title: "React Webpack Starter",
-				template: "./src/index.html",
+				template: "./src/assets/templates/index.html",
 				minify: {
 					collapseWhitespace: true
 				},
@@ -71,14 +72,10 @@ module.exports = {
 				cache: true
 			}
 		),
-		new ExtractTextPlugin(
-			{
-				filename: 'main.bundle.css',
-				disable: false,
-				allChunks: true
-			}
-		),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NamedModulesPlugin()
 	]
 };
+
+module.exports = config;
+
