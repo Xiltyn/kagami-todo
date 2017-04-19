@@ -50,7 +50,7 @@ app.listen(port, function () {
     let prodMessage = ':: Production version running on ::';
     let devMessage  = ':: Development version running on ::';
     let prodPort    = "    localhost:" + port;
-    let devPort     = "    localhost:8080/dev";
+    let devPort     = "    localhost:" + port + "/dev/";
 
     let cyan    = '\x1b[36m%s\x1b[0m';
     let green   = '\x1b[32m%s\x1b[0m';
