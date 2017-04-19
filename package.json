@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node server",
     "build": "set NODE_ENV=production && webpack -p --config webpack.production.config.js",
-    "postinstall": "npm deploy"
+    "postinstall": "node deploy"
   },
   "repository": {
     "type": "git",
