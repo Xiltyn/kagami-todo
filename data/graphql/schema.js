@@ -23,4 +23,6 @@ const Schema = new GraphQLSchema({
     query: Query
 });
 
+// console.log(db)
+
 export default Schema;

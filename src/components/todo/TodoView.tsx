@@ -4,7 +4,7 @@ import Todo from './Todo';
 import '../../assets/scss/components/todo/TodoView';
 import AddTodo from "./AddTodo";
 import BlobsAnimation from "../global/BlobsAnimation";
-import Schema from "../../schemas/schema";
+import Schema from "../../../data/graphql/schema";
 import {
     // These are the basic GraphQL types
     GraphQLInt,
