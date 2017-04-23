@@ -1,97 +1,27 @@
+// dependencies
 import * as React from 'react';
+// styles
+import '../../assets/scss/components/todo/TodoView';
+// components
 import Header from '../header/Header';
 import Todo from './Todo';
-import '../../assets/scss/components/todo/TodoView';
 import AddTodo from "./AddTodo";
 import BlobsAnimation from "../global/BlobsAnimation";
-import Schema from "../../../data/graphql/schema";
-import {
-    // These are the basic GraphQL types
-    GraphQLInt,
-    GraphQLFloat,
-    GraphQLString,
-    GraphQLList,
-    GraphQLObjectType,
-    GraphQLEnumType,
 
-    // This is used to create required fields and arguments
-    GraphQLNonNull,
+interface Props {
+	todosData:Array<any>;
+	categoriesData:Array<any>;
+	statusesData:Array<any>
+}
 
-    // This is the class we need to create the schema
-    GraphQLSchema,
+export default class TodoView extends React.Component<Props, any> {
+	protected constructor() {
+		super();
 
-    // This function is used execute GraphQL queries
-    graphql
-} from 'graphql';
+		this.state = { data: null }
+	}
 
-const Todos = [
-    {
-        id: 1,
-        content: 'Take out the trash',
-        time: 'Tomorrow@8am',
-        status: 'todo',
-        tags: [
-            'home',
-            'annoying'
-        ],
-        categoryId: 1,
-        priority: 1
-    },
-    {
-        id: 2,
-        content: 'Plan out the week',
-        time: 'Today@9am',
-        status: 'done',
-        tags: [
-            'home',
-            'jobSearch',
-            'mustDo'
-        ],
-        categoryId: 3,
-        priority: 2
-    },
-    {
-        id: 3,
-        content: 'Prepare for the interview',
-        time: '27 May 2017@10am',
-        status: 'inProgress',
-        tags: [
-            'Job',
-            'stressful'
-        ],
-        categoryId: 2,
-        priority: 3
-    },
-];
-const Categories = [
-    {
-        id: 1,
-        category: 'Me'
-    },
-    {
-        id: 2,
-        category: 'Job'
-    },
-    {
-        id: 3,
-        category: 'Social'
-    }
-];
-
-export default class TodoView extends React.Component<any, any> {
-	protected assignCategory = (categoryId:any) => {
-		let result:string = '';
-
-		Categories.forEach(function (cat) {
-			if (cat.id == categoryId) {
-				result = cat.category;
-			}
-		})
-
-		return result
-	};
-
-	protected returnTags = (tags:any) => {
+	protected _returnTags = (tags:any) => {
 		let result:string = '';
 
 		tags.forEach(function(tag:any) {
@@ -101,22 +31,24 @@ export default class TodoView extends React.Component<any, any> {
 		return result;
 	};
 
-	render() {
+	public render() {
 		let color = '#7ED321';
 
 		return(
 			<div className="TodoView">
 				<Header colorVariant={color} isLoggedIn={true} />
-				{Todos.map(
+				{this.state.data.map(
 					(todo, index:number) =>
 						<Todo
 							key={index.toString()}
 							content={todo.content}
 							time={todo.time}
-							tags={this.returnTags(todo.tags)}
-							category={this.assignCategory(todo.categoryId)}
+							tags={this._returnTags(todo.tags)}
+							categoryId={todo.categoryId}
 							priority={todo.priority}
-							status={todo.status}
+							statusId={todo.statusId}
+							statusesData={this.props.statusesData}
+							categoriesData={this.props.categoriesData}
 						/>
 				)}
 				<AddTodo />
@@ -124,14 +56,8 @@ export default class TodoView extends React.Component<any, any> {
 			</div>
 		)
 	}
+
+	protected componentWillMount() {
+		this.setState({data: this.props.todosData})
+	}
 }
-
-let query = `
-  {
-    receivedMessage: echo(message: "Hello")
-  }
-`;
-
-graphql(Schema, query).then(function(result) {
-    console.log(result);
-});

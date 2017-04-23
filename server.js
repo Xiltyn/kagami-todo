@@ -1,7 +1,9 @@
 const express = require('express');
+const graphqlHTTP = require('express-graphql');
 const path = require('path');
 const httpProxy = require('http-proxy');
 const mongo = require('promised-mongo');
+const schema = require('./data/graphql/schema.js');
 
 const proxy = httpProxy.createProxyServer();
 const app = express();
@@ -14,6 +16,11 @@ const publicPath = path.resolve(__dirname, 'build');
 
 // We point to our static assets
 app.use(express.static(publicPath));
+
+app.use('/data/graphql', graphqlHTTP({
+	schema: schema,
+	graphiql: true
+}));
 
 // We only want to run the workflow when not in production
 if (!isProduction) {

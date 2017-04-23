@@ -1,28 +1,19 @@
-import {
-    GraphQLString,
-    GraphQLObjectType,
-    GraphQLSchema
-} from 'graphql';
+const gql = require('graphql');
 
-const Query = new GraphQLObjectType({
-    name: 'RootQueries',
+const Todos = new gql.GraphQLObjectType({
+    name: 'TodosQuery',
     fields: () => ({
-        echo: {
-            type: GraphQLString,
-            args: {
-                message: {type: GraphQLString}
-            },
-            resolve(rootValue, args) {
-                return `received: ${args.message}`;
-            }
-        }
+        _id: {type: gql.GraphQLString},
+        content: {type: gql.GraphQLString},
+        time: {type: gql.GraphQLString},
+        priorityId: {type: gql.GraphQLInt},
+        categoryId: {type: gql.GraphQLInt}
     })
 });
 
-const Schema = new GraphQLSchema({
-    query: Query
+const Schema = new gql.GraphQLSchema({
+    query: Todos
 });
 
-// console.log(db)
 
-export default Schema;
+module.exports = Schema;
