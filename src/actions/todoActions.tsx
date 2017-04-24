@@ -4,4 +4,12 @@ export function addNewTodo(todoObject:Todo) {
         type: "TODO_ADD_NEW",
         payload: todoObject
     };
+};
+
+export function changeStatus(statusId:number, todoId:string) {
+    return {
+        type: "TODO_CHANGE_STATUS",
+        payload: statusId,
+        todoId: todoId
+    };
 }

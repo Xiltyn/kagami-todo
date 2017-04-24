@@ -64,7 +64,7 @@ export default class Todo extends React.Component<any, any> {
 					<p className="tags">
 						{this.props.tags}
 					</p>
-					<StatusIcon statusesData={this.props.statusesData} statusSlug={statusSlug} statusLabel={statusLabel} />
+					<StatusIcon statusesData={this.props.statusesData} statusSlug={statusSlug} statusLabel={statusLabel} todoId={this.props.id} />
 				</div>
 			</div>
 		)

@@ -1,7 +1,10 @@
 import * as React from 'react';
 import Todo from "../../models/Todo";
+import {addNewTodo} from "../../actions/todoActions";
+import {connect} from "react-redux";
 
-export default class AddTodo extends React.Component<any, any> {
+
+class AddTodo extends React.Component<any, any> {
 	constructor() {
 		super();
 
@@ -15,15 +18,16 @@ export default class AddTodo extends React.Component<any, any> {
 		})
 	};
 
-	protected _handleClick = () => {
-        const newTodo = new Todo('13212', 'Do something!', 'Now', ['shittyJob', 'needsToBeDone'], 1, 1, 1);
-        this.props.addTodo(newTodo);
-    }
+	protected _addTodo = () => {
+        const newTodo = new Todo('Do something!', 'Now', ['shittyJob', 'needsToBeDone']);
+        this.props.addNewTodo(newTodo);
+    };
+
 	public render() {
 		let isActive = (this.state.isClicked ? 'active' : 'inactive')
 
 		return(
-			<div className={"addTodo " + isActive} onClick={this._handleClick}>
+			<div className={"addTodo " + isActive} onClick={this._addTodo}>
 				<div className="box">
                     <div unselectable={true} className="addIcon">+</div>
 				</div>
@@ -32,3 +36,13 @@ export default class AddTodo extends React.Component<any, any> {
 
 	}
 }
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		addNewTodo: (object:Todo) => {
+			dispatch(addNewTodo(object));
+		}
+	};
+};
+
+export default connect(null, mapDispatchToProps)(AddTodo);

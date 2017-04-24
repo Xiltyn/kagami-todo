@@ -19,9 +19,6 @@ export default class TodoView extends React.Component<any, any> {
 		return result;
 	};
 
-    protected _addTodo = (newTodo) => {
-        this.props.addTodo(newTodo);
-    }
 	public render() {
 		let color = '#7ED321';
 		return(
@@ -31,6 +28,7 @@ export default class TodoView extends React.Component<any, any> {
 					(todo, index:number) =>
 						<Todo
 							key={index.toString()}
+							id={todo.id}
 							content={todo.content}
 							time={todo.time}
 							tags={this._returnTags(todo.tags)}
@@ -41,7 +39,7 @@ export default class TodoView extends React.Component<any, any> {
 							categoriesData={this.props.categoriesData}
 						/>
 				)}
-				<AddTodo addTodo={this._addTodo}/>
+				<AddTodo />
 				<BlobsAnimation/>
 			</div>
 		)

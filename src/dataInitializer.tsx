@@ -127,7 +127,7 @@ export const StatusesData:Array<Status> = [];
 
 function _initializeTodos() {
     for (var i = 0; i < 4; i++) {
-        let newEntry = new Todo(Todos[i].id, Todos[i].content, Todos[i].time, Todos[i].tags, Todos[i].statusId, Todos[i].categoryId, Todos[i].priority);
+        let newEntry = new Todo(Todos[i].content, Todos[i].time, Todos[i].tags);
         TodosData.push(newEntry);
     }
 };

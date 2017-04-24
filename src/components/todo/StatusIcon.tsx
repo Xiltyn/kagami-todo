@@ -1,7 +1,10 @@
 import * as React from 'react';
 import Tooltip from "../global/Tooltip";
+import {changeStatus} from "../../actions/todoActions";
+import {connect} from 'react-redux';
 
-export default class StatusIcon extends React.Component<any, any> {
+
+class StatusIcon extends React.Component<any, any> {
 	constructor() {
 		super();
 
@@ -14,25 +17,19 @@ export default class StatusIcon extends React.Component<any, any> {
 	protected _toggleStatus = () => {
 		let statuses = this.props.statusesData;
 		let currentSlug = this.state.slug;
-		let firstSlug = statuses[0].slug;
 		let lastSlug = statuses[statuses.length - 1].slug;
-		let firstLabel = statuses[0].label;
+		let todoId = this.props.todoId;
 
 		for (var i = 0; i < statuses.length; i++) {
-			let $th = statuses[i];
-			if (currentSlug == lastSlug) {
-				this.setState({
-					slug: firstSlug,
-					label: firstLabel
-				})
-			} else if (currentSlug == $th.slug) {
-				let nextStatus = statuses[i+1];
-				this.setState({
-					slug: nextStatus.slug,
-					label: nextStatus.label
-				})
+			if (currentSlug !== lastSlug) {
+				let statusId = statuses[i].id + 1;
+				this.props.changeStatus(statusId, todoId);
+			} else {
+				return
 			}
+
 		}
+
 	};
 
 	public render() {
@@ -51,3 +48,15 @@ export default class StatusIcon extends React.Component<any, any> {
 		})
 	}
 }
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		changeStatus: (statusId, todoId) => {
+			dispatch(changeStatus(statusId, todoId));
+		}
+	};
+};
+
+export default connect(null, mapDispatchToProps)(StatusIcon);
+
+

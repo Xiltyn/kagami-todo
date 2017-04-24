@@ -5,19 +5,13 @@ import {
     CategoriesData,
     StatusesData
 } from "../dataInitializer";
-import {addNewTodo} from "../actions/todoActions";
-import Todo from "../models/Todo";
 
 class Content extends React.Component <any, any> {
-
-    protected _addTodo = (newTodo:Todo) => {
-        this.props.addNewTodo(newTodo);
-    };
-
 	public render() {
+		console.log(this.props.data)
 		return(
 			<div className="content">
-				<TodoView todosData={this.props.data} categoriesData={CategoriesData} statusesData={StatusesData} addTodo={this._addTodo}/>
+				<TodoView todosData={this.props.data} categoriesData={CategoriesData} statusesData={StatusesData} />
 			</div>
 		)
 	}
@@ -28,12 +22,6 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addNewTodo: (object:Todo) => {
-            dispatch(addNewTodo(object));
-        }
-    };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Content);
+
+export default connect(mapStateToProps)(Content);
