@@ -5,9 +5,13 @@ import './assets/scss/main.scss';
 
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import {Provider} from "react-redux";
 import Content from './components/Content';
+import store from './store';
 
 ReactDom.render(
-	<Content/>,
+    <Provider store={store}>
+	    <Content/>
+    </Provider>,
 	document.getElementById('app')
 );

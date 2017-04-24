@@ -8,20 +8,8 @@ import Todo from './Todo';
 import AddTodo from "./AddTodo";
 import BlobsAnimation from "../global/BlobsAnimation";
 
-interface Props {
-	todosData:Array<any>;
-	categoriesData:Array<any>;
-	statusesData:Array<any>
-}
-
-export default class TodoView extends React.Component<Props, any> {
-	protected constructor() {
-		super();
-
-		this.state = { data: null }
-	}
-
-	protected _returnTags = (tags:any) => {
+export default class TodoView extends React.Component<any, any> {
+    protected _returnTags = (tags:any) => {
 		let result:string = '';
 
 		tags.forEach(function(tag:any) {
@@ -31,13 +19,15 @@ export default class TodoView extends React.Component<Props, any> {
 		return result;
 	};
 
+    protected _addTodo = (newTodo) => {
+        this.props.addTodo(newTodo);
+    }
 	public render() {
 		let color = '#7ED321';
-
 		return(
 			<div className="TodoView">
 				<Header colorVariant={color} isLoggedIn={true} />
-				{this.state.data.map(
+				{this.props.todosData.map(
 					(todo, index:number) =>
 						<Todo
 							key={index.toString()}
@@ -51,13 +41,9 @@ export default class TodoView extends React.Component<Props, any> {
 							categoriesData={this.props.categoriesData}
 						/>
 				)}
-				<AddTodo />
+				<AddTodo addTodo={this._addTodo}/>
 				<BlobsAnimation/>
 			</div>
 		)
-	}
-
-	protected componentWillMount() {
-		this.setState({data: this.props.todosData})
 	}
 }
