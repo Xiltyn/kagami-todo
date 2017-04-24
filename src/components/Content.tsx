@@ -1,8 +1,8 @@
 import * as React from 'react';
 import TodoView from './todo/TodoView';
-import Todo from "../../data/models/Todo";
-import Category from "../../data/models/Category";
-import Status from "../../data/models/Status";
+import Todo from "../models/Todo";
+import Category from "../models/Category";
+import Status from "../models/Status";
 
 const Categories = [
 	{

@@ -1,9 +1,6 @@
 const express = require('express');
-const graphqlHTTP = require('express-graphql');
 const path = require('path');
 const httpProxy = require('http-proxy');
-const mongo = require('promised-mongo');
-const schema = require('./data/graphql/schema.js');
 
 const proxy = httpProxy.createProxyServer();
 const app = express();
@@ -12,15 +9,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 const port = isProduction ? process.env.PORT : 3000;
 const publicPath = path.resolve(__dirname, 'build');
 
-// const db = mongo("mongodb://f3ng_liu:l0EQKn%#a#Gu@kagamicluster01-shard-00-00-aiigd.mongodb.net:27017/kagami-todo?ssl=true&replicaSet=kagamiCluster01-shard-0&authSource=xiltyn");
-
 // We point to our static assets
 app.use(express.static(publicPath));
-
-app.use('/data/graphql', graphqlHTTP({
-	schema: schema,
-	graphiql: true
-}));
 
 // We only want to run the workflow when not in production
 if (!isProduction) {

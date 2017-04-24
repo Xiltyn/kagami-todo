@@ -1,7 +1,7 @@
 import * as React from 'react';
 import StatusIcon from './StatusIcon';
-import Category from "../../../data/models/Category";
-import Status from "../../../data/models/Status";
+import Category from "../../models/Category";
+import Status from "../../models/Status";
 
 export default class Todo extends React.Component<any, any> {
 	protected _assignCategory = (categoryId:number) => {
