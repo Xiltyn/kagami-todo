@@ -2,6 +2,7 @@ import * as React from 'react';
 import Tooltip from "../global/Tooltip";
 import {changeStatus} from "../../actions/todoActions";
 import {connect} from 'react-redux';
+import {StatusesData} from "../../dataInitializer";
 
 
 class StatusIcon extends React.Component<any, any> {
@@ -14,40 +15,65 @@ class StatusIcon extends React.Component<any, any> {
 		}
 	};
 
-	protected _toggleStatus = () => {
-		let statuses = this.props.statusesData;
-		let currentSlug = this.state.slug;
-		let lastSlug = statuses[statuses.length - 1].slug;
-		let todoId = this.props.todoId;
+    protected _assignStatusSlug = (statusId:number) => {
+        let result = null;
 
-		for (var i = 0; i < statuses.length; i++) {
-			if (currentSlug !== lastSlug) {
-				let statusId = statuses[i].id + 1;
-				this.props.changeStatus(statusId, todoId);
-			} else {
-				return
-			}
+        for (let i = 0; i < StatusesData.length; i++) {
+            if (StatusesData[i].id == statusId) {
+                result = StatusesData[i].slug;
+            }
+        }
+        return result
+    };
 
-		}
+    protected _assignStatusLabel = (statusId:number) => {
+        let result = null;
 
-	};
+        for (let i = 0; i < StatusesData.length; i++) {
+            if (StatusesData[i].id == statusId) {
+                result = StatusesData[i].label;
+            }
+        }
+
+        return result
+    };
+
+    protected _toggleStatus = () => {
+        let currentSlug = this._assignStatusSlug(this.props.statusId);
+        let lastSlug = StatusesData[StatusesData.length - 1].slug;
+        let todoId = this.props.todoId;
+
+        for (var i = 0; i < StatusesData.length; i++) {
+            if (currentSlug !== lastSlug) {
+                let statusId = StatusesData[i].id + 1;
+                this.props.changeStatus(statusId, todoId);
+            } else {
+                return
+            }
+
+        }
+
+    };
 
 	public render() {
+        let statusSlug = this._assignStatusSlug(this.props.statusId);
+        let statusLabel = this._assignStatusLabel(this.props.statusId);
 		return(
 			<div className="status" onClick={this._toggleStatus}>
-				<Tooltip position="left">{this.state.label}</Tooltip>
-				<div className={this.state.slug} />
+				<Tooltip position="left">{statusLabel}</Tooltip>
+				<div className={statusSlug} />
 			</div>
 		)
 	}
-
-	protected componentWillMount() {
-		this.setState({
-			slug: this.props.statusSlug,
-			label: this.props.statusLabel
-		})
-	}
 }
+
+const mapStateToProps = (state, ownProps) => {
+    let currentStatusId = state.TodosData[ownProps.todoId].statusId;
+    console.log(currentStatusId);
+    return {
+        statusId: currentStatusId
+    }
+};
 
 const mapDispatchToProps = (dispatch) => {
 	return {
@@ -57,6 +83,6 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(null, mapDispatchToProps)(StatusIcon);
+export default connect(mapStateToProps, mapDispatchToProps)(StatusIcon);
 
 

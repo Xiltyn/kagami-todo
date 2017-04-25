@@ -35,7 +35,6 @@ export default class TodoView extends React.Component<any, any> {
 							categoryId={todo.categoryId}
 							priority={todo.priority}
 							statusId={todo.statusId}
-							statusesData={this.props.statusesData}
 							categoriesData={this.props.categoriesData}
 						/>
 				)}

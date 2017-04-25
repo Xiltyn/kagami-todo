@@ -1,7 +1,6 @@
 import * as React from 'react';
 import StatusIcon from './StatusIcon';
 import Category from "../../models/Category";
-import Status from "../../models/Status";
 
 export default class Todo extends React.Component<any, any> {
 	protected _assignCategory = (categoryId:number) => {
@@ -16,35 +15,9 @@ export default class Todo extends React.Component<any, any> {
 		return result.toLowerCase()
 	};
 
-	protected _assignStatusSlug = (statusId:number) => {
-		let result = null;
-		let statuses:Array<Status> = this.props.statusesData;
-
-		for (let i = 0; i < statuses.length; i++) {
-			if (statuses[i].id == statusId) {
-				result = statuses[i].slug;
-			}
-		}
-
-		return result
-	};
-
-	protected _assignStatusLabel = (statusId:number) => {
-		let result = null;
-		let statuses:Array<Status> = this.props.statusesData;
-
-		for (let i = 0; i < statuses.length; i++) {
-			if (statuses[i].id == statusId) {
-				result = statuses[i].label;
-			}
-		}
-
-		return result
-	};
 	render() {
 		let categoryClass = this._assignCategory(this.props.categoryId);
-		let statusSlug = this._assignStatusSlug(this.props.statusId);
-		let statusLabel = this._assignStatusLabel(this.props.statusId);
+
 
 		return(
 			<div className="Todo">
@@ -64,7 +37,7 @@ export default class Todo extends React.Component<any, any> {
 					<p className="tags">
 						{this.props.tags}
 					</p>
-					<StatusIcon statusesData={this.props.statusesData} statusSlug={statusSlug} statusLabel={statusLabel} todoId={this.props.id} />
+					<StatusIcon todoId={this.props.id} />
 				</div>
 			</div>
 		)

@@ -9,7 +9,7 @@ export function addNewTodo(todoObject:Todo) {
 export function changeStatus(statusId:number, todoId:string) {
     return {
         type: "TODO_CHANGE_STATUS",
-        payload: statusId,
+        statusId: statusId,
         todoId: todoId
     };
 }

@@ -8,17 +8,15 @@ const todoReducer = (state, action) => {
             };
             break;
 		case "TODO_CHANGE_STATUS":
-			id = state.TodosData.findIndex( r => r.id === action.todoId);
-			if (state.TodosData.id == id) {
-				state = {
-					TodosData: [
-						...state.TodosData,
-						{
-							statusId: action.payload
-						}
-					]
-				}
-			}
+			state = {
+                ...state,
+                TodosData: state.TodosData.map(todo => todo.id === action.todoId ?
+                    // transform the one with a matching id
+                    { ...todo, statusId: action.statusId } :
+                    // otherwise return original todo
+                    todo
+                )
+            }
 			break;
     }
     return state;
