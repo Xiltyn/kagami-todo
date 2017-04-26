@@ -1,5 +1,4 @@
 const todoReducer = (state, action) => {
-	let id:string = null;
     switch (action.type) {
         case "TODO_ADD_NEW":
             state = {
@@ -7,7 +6,7 @@ const todoReducer = (state, action) => {
                 TodosData: [...state.TodosData, action.payload]
             };
             break;
-		case "TODO_CHANGE_STATUS":
+        case "TODO_CHANGE_STATUS":
 			state = {
                 ...state,
                 TodosData: state.TodosData.map(todo => todo.id === action.todoId ?

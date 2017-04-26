@@ -95,27 +95,27 @@ const Todos = [
 ];
 const Statuses = [
     {
-        id: 1,
+        id: 0,
         slug: 'todo',
         label: 'To Do'
     },
     {
-        id: 2,
+        id: 1,
         slug: 'inProgress',
         label: 'In Progress'
     },
     {
-        id: 3,
+        id: 2,
         slug: 'done',
         label: 'Completed'
     },
     {
-        id: 4,
+        id: 3,
         slug: 'postpone',
         label: 'Postponed'
     },
     {
-        id: 5,
+        id: 4,
         slug: 'update',
         label: 'Update'
     },

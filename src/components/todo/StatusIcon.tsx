@@ -39,39 +39,43 @@ class StatusIcon extends React.Component<any, any> {
     };
 
     protected _toggleStatus = () => {
-        let currentSlug = this._assignStatusSlug(this.props.statusId);
-        let lastSlug = StatusesData[StatusesData.length - 1].slug;
-        let todoId = this.props.todoId;
+        let currentStatusId:number = this.props.statusId;
+        let lastStatusId:number = 4;
+        let todoId:string = this.props.todoId;
+        let statusId:number = null;
 
         for (var i = 0; i < StatusesData.length; i++) {
-            if (currentSlug !== lastSlug) {
-                let statusId = StatusesData[i].id + 1;
-                this.props.changeStatus(statusId, todoId);
+            if (currentStatusId !== lastStatusId) {
+                if (StatusesData[i].id === this.props.statusId) {
+                    statusId = StatusesData[i].id + 1;
+                    this.props.changeStatus(statusId, todoId);
+                }
             } else {
-                return
+                statusId = lastStatusId;
             }
-
         }
 
     };
 
 	public render() {
-        let statusSlug = this._assignStatusSlug(this.props.statusId);
-        let statusLabel = this._assignStatusLabel(this.props.statusId);
 		return(
 			<div className="status" onClick={this._toggleStatus}>
-				<Tooltip position="left">{statusLabel}</Tooltip>
-				<div className={statusSlug} />
+				<Tooltip position="left">{this.props.currentLabel}</Tooltip>
+				<div className={this.props.currentSlug} />
 			</div>
 		)
 	}
+
 }
 
 const mapStateToProps = (state, ownProps) => {
     let currentStatusId = state.TodosData[ownProps.todoId].statusId;
-    console.log(currentStatusId);
+    let currentSlug = state.StatusesData[currentStatusId].slug;
+    let currentLabel = state.StatusesData[currentStatusId].label;
     return {
-        statusId: currentStatusId
+        statusId: currentStatusId,
+        currentSlug: currentSlug,
+        currentLabel: currentLabel
     }
 };
 
