@@ -106,8 +106,8 @@ const Statuses = [
     },
     {
         id: 2,
-        slug: 'done',
-        label: 'Completed'
+        slug: 'update',
+        label: 'Update'
     },
     {
         id: 3,
@@ -116,9 +116,9 @@ const Statuses = [
     },
     {
         id: 4,
-        slug: 'update',
-        label: 'Update'
-    },
+        slug: 'done',
+        label: 'Completed'
+    }
 ];
 
 export const TodosData:Array<Todo> = [];

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import StatusIcon from './StatusIcon';
 import Category from "../../models/Category";
+import Tooltip from "../global/Tooltip";
 
 export default class Todo extends React.Component<any, any> {
 	protected _assignCategory = (categoryId:number) => {
@@ -30,7 +31,9 @@ export default class Todo extends React.Component<any, any> {
 						<p>{this.props.time}</p>
 					</div>
 					<div className="priority">
-						<div className={"p" + this.props.priority} />
+						<div className={"p" + this.props.priority}>
+                            <Tooltip position="top">Priority :: {this.props.priority}</Tooltip>
+                        </div>
 					</div>
 				</div>
 				<div className="footnotes">
