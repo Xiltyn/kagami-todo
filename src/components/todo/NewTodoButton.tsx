@@ -2,6 +2,7 @@ import * as React from 'react';
 import Todo from "../../models/Todo";
 import {addNewTodo} from "../../actions/todoActions";
 import {connect} from "react-redux";
+import NewTodoInput from "./NewTodoInput";
 
 
 class AddTodo extends React.Component<any, any> {
@@ -16,6 +17,7 @@ class AddTodo extends React.Component<any, any> {
 		this.setState({
 			isClicked: !this.state.isClicked
 		})
+		this.props.openInput(this.state.isClicked);
 	};
 
 	protected _addTodo = () => {
@@ -24,10 +26,8 @@ class AddTodo extends React.Component<any, any> {
     };
 
 	public render() {
-		let isActive = (this.state.isClicked ? 'active' : 'inactive')
-
 		return(
-			<div className={"newTodoButton " + isActive} onClick={this._addTodo}>
+			<div className="newTodoButton" onClick={this._toggleInput}>
 				<div className="box">
                     <div unselectable={true} className="addIcon">+</div>
 				</div>

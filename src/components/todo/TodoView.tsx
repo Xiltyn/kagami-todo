@@ -7,8 +7,16 @@ import Header from '../header/Header';
 import Todo from './Todo';
 import AddTodo from "./NewTodoButton";
 import BlobsAnimation from "../global/BlobsAnimation";
+import NewTodoInput from "./NewTodoInput";
 
 export default class TodoView extends React.Component<any, any> {
+	constructor() {
+		super();
+
+		this.state = {
+			openInput: false
+		}
+	}
     protected _returnTags = (tags:any) => {
 		let result:string = '';
 
@@ -19,8 +27,18 @@ export default class TodoView extends React.Component<any, any> {
 		return result;
 	};
 
+    protected _openAddTodoInput = (isClicked:boolean) => {
+    	console.log(isClicked)
+    	if (isClicked) {
+    		this.setState({openInput: false});
+		} else {
+			this.setState({openInput: true});
+		}
+	};
+
 	public render() {
 		let color = '#7ED321';
+		let activeInput = (this.state.openInput ? <NewTodoInput/> : null);
 		return(
 			<div className="TodoView">
 				<Header colorVariant={color} isLoggedIn={true} />
@@ -38,8 +56,9 @@ export default class TodoView extends React.Component<any, any> {
 							categoriesData={this.props.categoriesData}
 						/>
 				)}
-				<AddTodo />
+				<AddTodo openInput={this._openAddTodoInput}/>
 				<BlobsAnimation/>
+				{activeInput}
 			</div>
 		)
 	}
