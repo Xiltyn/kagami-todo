@@ -5,7 +5,7 @@ import '../../assets/scss/components/todo/TodoView';
 // components
 import Header from '../header/Header';
 import Todo from './Todo';
-import AddTodo from "./AddTodo";
+import AddTodo from "./NewTodoButton";
 import BlobsAnimation from "../global/BlobsAnimation";
 
 export default class TodoView extends React.Component<any, any> {

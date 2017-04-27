@@ -2,7 +2,13 @@ import Todo from "../models/Todo";
 export function addNewTodo(todoObject:Todo) {
     return {
         type: "TODO_ADD_NEW",
-        payload: todoObject
+        id: todoObject.id,
+        content: todoObject.content,
+        time: todoObject.time,
+        tags: todoObject.tags,
+        categoryId: todoObject.categoryId,
+        statusId: todoObject.statusId,
+        priority: todoObject.priority
     };
 };
 

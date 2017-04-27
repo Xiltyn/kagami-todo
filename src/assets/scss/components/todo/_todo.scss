@@ -1,4 +1,4 @@
-.Todo, .addTodo {
+.Todo, .newTodoButton {
   margin: 1.6rem 0.8rem 0 0.8rem;
   width: auto;
   padding: 0 0.8rem;
@@ -138,7 +138,7 @@
   }
 }
 
-.addTodo {
+.newTodoButton {
   opacity: .4;
   transition: opacity .3s ease-out;
   .box {
@@ -165,6 +165,6 @@
   }
 }
 
-.addTodo:hover {
+.newTodoButton:hover {
   opacity: 1;
 }

@@ -19,7 +19,7 @@ class AddTodo extends React.Component<any, any> {
 	};
 
 	protected _addTodo = () => {
-        const newTodo = new Todo('Do something!', 'Now', ['shittyJob', 'needsToBeDone']);
+        const newTodo:Todo = new Todo('Do something!', 'Now', ['shittyJob', 'needsToBeDone']);
         this.props.addNewTodo(newTodo);
     };
 
@@ -27,7 +27,7 @@ class AddTodo extends React.Component<any, any> {
 		let isActive = (this.state.isClicked ? 'active' : 'inactive')
 
 		return(
-			<div className={"addTodo " + isActive} onClick={this._addTodo}>
+			<div className={"newTodoButton " + isActive} onClick={this._addTodo}>
 				<div className="box">
                     <div unselectable={true} className="addIcon">+</div>
 				</div>

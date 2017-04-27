@@ -11,7 +11,6 @@ export default class Todo {
 
 	constructor(content:string, time:string, tags:Array<string>) {
 		let id = ++Todo.idCounter;
-		let randomStatusId:number = Math.floor(Math.random() * (4 - 0 + 1) + 0);
 		let randomCategoryId:number = Math.floor(Math.random() * (3 - 1 + 1) + 1);
 		let randomPriority:number = Math.floor(Math.random() * (3 - 1 + 1) + 1);
 
@@ -20,7 +19,7 @@ export default class Todo {
 		this.content = content;
 		this.time = time;
 		this.tags = tags;
-		this.statusId = randomStatusId;
+		this.statusId = 0;
 		this.categoryId = randomCategoryId;
 		this.priority = randomPriority;
 	}

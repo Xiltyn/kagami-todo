@@ -9,6 +9,9 @@
 		"removeComments": true,
 		"target": "ES5"
 	},
+    "files": [
+      "typings/index.d.ts"
+    ],
 	"exclude": [
 		"node_modules",
 		"typings/modules"
