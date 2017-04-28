@@ -13,7 +13,6 @@
       "typings/index.d.ts"
     ],
 	"exclude": [
-		"node_modules",
-		"typings/modules"
+		"node_modules"
 	]
 }

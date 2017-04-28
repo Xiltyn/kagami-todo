@@ -163,8 +163,64 @@
       pointer-events: none;
     }
   }
+  &:hover {
+    opacity: 1;
+  }
 }
 
-.newTodoButton:hover {
-  opacity: 1;
+.newTodoInput {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  .inputs-wrapper {
+    position: absolute;
+    width: 90vw;
+    height:80vh;
+    left: 50%;
+    top: 50%;
+    margin-left: -45vw;
+    margin-top: -40vh;
+    background-color: #353535;
+    z-index: 150;
+    .todo-input {
+      height: 4rem;
+      margin: 4rem 1.6rem;
+      border-radius: 2.4rem;
+      input[type="text"] {
+        width: 100%;
+        margin:auto;
+        border-radius: 2.4rem;
+        border: none;
+        padding: 0.4rem 1.2rem;
+        background-color: #242424;
+        font-size: 3.2rem;
+        line-height: 3.2rem;
+        box-sizing: border-box;
+        &:focus {
+          outline:none;
+          background-color: #C8C8C8;
+          color: #242424;
+        }
+      }
+    }
+    button {
+      font-size: 2.4rem;
+      padding: 0 1.6rem;
+      line-height: 2.6rem;
+      background: none;
+      border: .2rem solid #fff;
+      border-radius: 1.6rem;
+      -webkit-transition: all 0.3s ease-out;
+      -moz-transition: all 0.3s ease-out;
+      -ms-transition: all 0.3s ease-out;
+      -o-transition: all 0.3s ease-out;
+      transition: all 0.3s ease-out;
+      &:hover {
+        background-color: #fff;
+        color: #242424;
+      }
+    }
+  }
 }

@@ -1,29 +1,10 @@
 import * as React from 'react';
-import Todo from "../../models/Todo";
-import {addNewTodo} from "../../actions/todoActions";
 import {connect} from "react-redux";
-import NewTodoInput from "./NewTodoInput";
 
-
-class AddTodo extends React.Component<any, any> {
-	constructor() {
-		super();
-
-		this.state = {
-			isClicked: false
-		}
-	};
+export default class NewTodoButton extends React.Component<any, any> {
 	protected _toggleInput = () => {
-		this.setState({
-			isClicked: !this.state.isClicked
-		})
-		this.props.openInput(this.state.isClicked);
+		this.props.openInput();
 	};
-
-	protected _addTodo = () => {
-        const newTodo:Todo = new Todo('Do something!', 'Now', ['shittyJob', 'needsToBeDone']);
-        this.props.addNewTodo(newTodo);
-    };
 
 	public render() {
 		return(
@@ -36,13 +17,3 @@ class AddTodo extends React.Component<any, any> {
 
 	}
 }
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		addNewTodo: (object:Todo) => {
-			dispatch(addNewTodo(object));
-		}
-	};
-};
-
-export default connect(null, mapDispatchToProps)(AddTodo);

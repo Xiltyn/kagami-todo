@@ -5,8 +5,7 @@ import '../../assets/scss/components/todo/TodoView';
 // components
 import Header from '../header/Header';
 import Todo from './Todo';
-import AddTodo from "./NewTodoButton";
-import BlobsAnimation from "../global/BlobsAnimation";
+import NewTodoButton from "./NewTodoButton";
 import NewTodoInput from "./NewTodoInput";
 
 export default class TodoView extends React.Component<any, any> {
@@ -27,18 +26,18 @@ export default class TodoView extends React.Component<any, any> {
 		return result;
 	};
 
-    protected _openAddTodoInput = (isClicked:boolean) => {
-    	console.log(isClicked)
-    	if (isClicked) {
-    		this.setState({openInput: false});
-		} else {
-			this.setState({openInput: true});
-		}
+    protected _switchTodoInput = () => {
+    	this.setState({openInput: !this.state.openInput})
+
 	};
+
+    protected _exitInput = (boolean) => {
+        this.setState({openInput: boolean});
+    };
 
 	public render() {
 		let color = '#7ED321';
-		let activeInput = (this.state.openInput ? <NewTodoInput/> : null);
+		let activeInput = (this.state.openInput ? <NewTodoInput switchInput={this._exitInput}/> : null);
 		return(
 			<div className="TodoView">
 				<Header colorVariant={color} isLoggedIn={true} />
@@ -56,8 +55,7 @@ export default class TodoView extends React.Component<any, any> {
 							categoriesData={this.props.categoriesData}
 						/>
 				)}
-				<AddTodo openInput={this._openAddTodoInput}/>
-				<BlobsAnimation/>
+				<NewTodoButton openInput={this._switchTodoInput}/>
 				{activeInput}
 			</div>
 		)

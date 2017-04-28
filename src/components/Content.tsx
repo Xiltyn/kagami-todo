@@ -9,7 +9,7 @@ import {
 class Content extends React.Component <any, any> {
 	public render() {
 		return(
-			<div className="content">
+			<div className="content-wrapper">
 				<TodoView todosData={this.props.todosData} categoriesData={CategoriesData} statusesData={StatusesData} />
 			</div>
 		)
