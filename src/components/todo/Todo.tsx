@@ -20,11 +20,11 @@ export default class Todo extends React.Component<any, any> {
 		let categoryClass = this._assignCategory(this.props.categoryId);
 
 
-		return(
+		return (
 			<div className="Todo">
 				<div className="box">
 					<div className="category">
-						<div className={"icon " + categoryClass} />
+						<div className={"icon " + categoryClass}/>
 					</div>
 					<div className="todo-content">
 						<h2>{this.props.content}</h2>
@@ -32,15 +32,15 @@ export default class Todo extends React.Component<any, any> {
 					</div>
 					<div className="priority">
 						<div className={"p" + this.props.priority}>
-                            <Tooltip position="top">Priority :: {this.props.priority}</Tooltip>
-                        </div>
+							<Tooltip position="top">Priority :: {this.props.priority}</Tooltip>
+						</div>
 					</div>
 				</div>
 				<div className="footnotes">
 					<p className="tags">
 						{this.props.tags}
 					</p>
-					<StatusIcon todoId={this.props.id} />
+					<StatusIcon todoId={this.props.id}/>
 				</div>
 			</div>
 		)

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import Todo from "../../models/Todo";
-import {addNewTodo} from "../../actions/todoActions";
+import Todo from "../../../models/Todo";
+import {addNewTodo} from "../../../actions/todoActions";
 import {connect} from "react-redux";
-import Dim from "../global/Dim";
-import '../../assets/scss/components/global/dim'
+import Dim from "../../global/Dim";
+import '../../../assets/scss/components/global/dim';
 
-class NewTodoInput extends React.Component<any, any> {
+class Form extends React.Component<any, any> {
     constructor() {
         super();
 
@@ -43,10 +43,15 @@ class NewTodoInput extends React.Component<any, any> {
         this.props.switchInput(false);
     };
 
+    protected _cancelNewTodo = () => {
+
+    	this.props.switchInput(false);
+    };
+
     public render() {
         return (
             <div className="newTodoInput">
-                <Dim />
+                <Dim callback={this._cancelNewTodo} />
                 <div className="inputs-wrapper">
                     <div className="todo-input">
                         <input ref="category" placeholder="category" type="text" onChange={this._recordInput}/>
@@ -78,4 +83,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(null, mapDispatchToProps)(NewTodoInput);
+export default connect(null, mapDispatchToProps)(Form);
