@@ -4,6 +4,7 @@ import {addNewTodo} from "../../../actions/todoActions";
 import {connect} from "react-redux";
 import Dim from "../../global/Dim";
 import '../../../assets/scss/components/global/dim';
+import Category from "./Inputs/Category";
 
 class Form extends React.Component<any, any> {
     constructor() {
@@ -53,22 +54,23 @@ class Form extends React.Component<any, any> {
             <div className="newTodoInput">
                 <Dim callback={this._cancelNewTodo} />
                 <div className="inputs-wrapper">
-                    <div className="todo-input">
-                        <input ref="category" placeholder="category" type="text" onChange={this._recordInput}/>
-                    </div>
-                    <div className="todo-input">
-                        <input ref="content" placeholder="content" type="text" onChange={this._recordInput}/>
-                    </div>
-                    <div className="todo-input">
-                        <input ref="time" placeholder="time" type="text" onChange={this._recordInput}/>
-                    </div>
-                    <div className="todo-input">
-                        <input ref="tags" placeholder="tags" type="text" onChange={this._recordInput}/>
-                    </div>
-                    <div className="todo-input">
-                        <input ref="priority" placeholder="priority" type="text" onChange={this._recordInput}/>
-                    </div>
-                    <button onClick={this.submitNewTodo}>Submit</button>
+                    {/*<div className="todo-input">*/}
+                        {/*<input ref="category" placeholder="category" type="text" onChange={this._recordInput}/>*/}
+                    {/*</div>*/}
+                    {/*<div className="todo-input">*/}
+                        {/*<input ref="content" placeholder="content" type="text" onChange={this._recordInput}/>*/}
+                    {/*</div>*/}
+                    {/*<div className="todo-input">*/}
+                        {/*<input ref="time" placeholder="time" type="text" onChange={this._recordInput}/>*/}
+                    {/*</div>*/}
+                    {/*<div className="todo-input">*/}
+                        {/*<input ref="tags" placeholder="tags" type="text" onChange={this._recordInput}/>*/}
+                    {/*</div>*/}
+                    {/*<div className="todo-input">*/}
+                        {/*<input ref="priority" placeholder="priority" type="text" onChange={this._recordInput}/>*/}
+                    {/*</div>*/}
+                    {/*<button onClick={this.submitNewTodo}>Submit</button>*/}
+					<Category/>
                 </div>
             </div>
         )

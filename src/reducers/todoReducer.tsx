@@ -32,6 +32,19 @@ const todoReducer = (state, action) => {
 				)
 			}
 			break;
+		case "TODO_CREATE_PROTOTYPE":
+			state = {
+				...state,
+				NewTodoProtorype: [
+					{
+						categoryId: action.categoryId,
+						content: action.content,
+						time: action.time,
+						tags: action.tags,
+						priority: action.priority
+					}
+				]
+			}
 	}
 	return state;
 };

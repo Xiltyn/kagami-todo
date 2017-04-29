@@ -1,6 +1,7 @@
 import Todo from "./models/Todo";
 import Category from "./models/Category";
 import Status from "./models/Status";
+import NewTodo from "./models/NewTodo";
 
 const Categories = [
     {
@@ -124,6 +125,7 @@ const Statuses = [
 export const TodosData:Array<Todo> = [];
 export const CategoriesData:Array<Category> = [];
 export const StatusesData:Array<Status> = [];
+export const NewTodoPrototype:Array<NewTodo> = [];
 
 function _initializeTodos() {
     for (var i = 0; i < 4; i++) {
@@ -146,6 +148,12 @@ function _initializeStatuses() {
     }
 };
 
+function _buildNewTodoPrototype() {
+	let prototype = new NewTodo();
+	NewTodoPrototype.push(prototype);
+}
+
 _initializeTodos();
 _initializeCategories();
 _initializeStatuses();
+_buildNewTodoPrototype();

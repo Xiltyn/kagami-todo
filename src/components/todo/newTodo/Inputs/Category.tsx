@@ -1,5 +1,5 @@
 import * as React from 'react';
-import BlobsAnimation from "../../../global/BlobsAnimation";
+import CategoryMenu from "./CategoryMenu";
 
 export default class Category extends React.Component<any, any> {
 	constructor() {
@@ -10,9 +10,16 @@ export default class Category extends React.Component<any, any> {
 		}
 	};
 
-	protected updateSelection = (event) => {
-		let currentSelection = event.target.value;
+	protected updateSelection = (selectedId:number) => {
+		let currentSelection:number = null;
+		let categories = null;
 
+		for (var i = 0; i < categories.length; i++) {
+			if (categories[i].id === selectedId) {
+				currentSelection = categories[i].id
+			}
+		}
+		console.log(currentSelection);
 		this.setState({currentSelection: currentSelection});
 	};
 
@@ -25,7 +32,7 @@ export default class Category extends React.Component<any, any> {
 	public render() {
 		return (
 			<div className="input-wrap category">
-				<BlobsAnimation/>
+				<CategoryMenu/>
 				<button onClick={this.passData}>Submit</button>
 			</div>
 		)
