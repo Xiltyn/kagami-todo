@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from "react-redux";
-import {prototypeCategory} from "../../../../actions/todoActions";
+import {prototypeCategory} from "../../../../actions/prototypeActions";
 
 class CategoryOption extends React.Component<any, any> {
     constructor() {
@@ -20,10 +20,15 @@ class CategoryOption extends React.Component<any, any> {
 		})
 	};
 
+    protected _handleHover = () => {
+    	this.props.onHover(this.props.categoryId);
+	};
+
 	public render() {
-		let isActive = (this.state.isActive ? 'isActive' : '')
+		let isActive = (this.state.isActive ? 'isActive' : '');
+
         return(
-            <div className={"blob " + isActive} onClick={this._passCategoryId}>
+            <div className={"blob " + isActive} onClick={this._passCategoryId} onMouseEnter={this._handleHover}>
 				{this.props.children}
             </div>
         )

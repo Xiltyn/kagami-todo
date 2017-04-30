@@ -1,6 +1,6 @@
-import {TodosData} from "../dataInitializer";
 import Todo from "../models/Todo";
-const todoReducer = (state, action) => {
+
+const reducers = (state, action) => {
 	let newItem:Todo = {
 		id: action.id,
 		content: action.content,
@@ -11,6 +11,8 @@ const todoReducer = (state, action) => {
 		priority: action.priority
 	};
 	switch (action.type) {
+
+		//	Todo Reducers
 		case "TODO_ADD_NEW":
 			state = {
 				...state,
@@ -32,21 +34,36 @@ const todoReducer = (state, action) => {
 				)
 			}
 			break;
-		case "TODO_CREATE_PROTOTYPE":
+
+		//	Prototype Reducers
+		case "PROTOTYPE_CHANGE_CATEGORY":
 			state = {
 				...state,
-				NewTodoProtorype: [
+				NewTodoPrototype: state.NewTodoPrototype.map(prototype => prototype.id === '0' ?
 					{
+						...prototype,
 						categoryId: action.categoryId,
-						content: action.content,
-						time: action.time,
-						tags: action.tags,
-						priority: action.priority
-					}
-				]
-			}
+						currentStep: action.currentStep
+					} :
+					prototype
+				)
+			};
+			break;
+		case "PROTOTYPE_NEXT_STEP":
+			state = {
+				...state,
+				NewTodoPrototype: state.NewTodoPrototype.map(prototype => prototype.id === '0' ?
+					{
+						...prototype,
+						currentStep: action.nextStep
+					} :
+					prototype
+				)
+			};
+			break;
+
 	}
 	return state;
 };
 
-export default todoReducer;
+export default reducers;

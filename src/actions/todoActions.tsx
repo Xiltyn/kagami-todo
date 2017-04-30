@@ -20,9 +20,3 @@ export function changeStatus(statusId:number, todoId:string) {
 	};
 }
 
-export function prototypeCategory(categoryId:number) {
-	return {
-		type: "TODO_CREATE_PROTOTYPE",
-		categoryId: categoryId
-	}
-}

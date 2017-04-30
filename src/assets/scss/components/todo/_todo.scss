@@ -182,41 +182,46 @@
 		top: 50%;
 		margin-left: -45vw;
 		margin-top: -40vh;
+		border-radius: 4rem;
 		background-color: #242424;
 		z-index: 150;
-		.todo-input {
-			height: 4rem;
-			margin: 4rem 1.6rem;
-			border-radius: 2.4rem;
-			input[type="text"] {
-				width: 100%;
-				margin: auto;
-				border-radius: 2.4rem;
-				border: none;
-				padding: 0.4rem 1.2rem;
-				background-color: #1a1a1a;
-				font-size: 3.2rem;
-				line-height: 3.2rem;
-				box-sizing: border-box;
-				&:focus {
-					outline: none;
-					background-color: #C8C8C8;
-					color: #242424;
+		.input {
+			padding: 2.4rem 3.2rem;
+		}
+		.category {
+			color: $paleGrey;
+			transition: all .3s ease-in-out;
+			&:hover {
+				color: #fff;
+			}
+			.header {
+				height: 16rem;
+			}
+			.categoryMenu {
+				padding-top: 10rem ;
+				.description {
+					transition: all .3s ease-in-out;
+					pointer-events: none;
+				}
+				.confirmation {
+					text-align: center;
+					margin-top: -8rem;
 				}
 			}
 		}
 		button {
 			position: absolute;
 			width: 10rem;
+			top: 60%;
 			left: 50%;
-			margin-left: -5rem;
-			top: 50%;
 			margin-top: 15rem;
-			font-size: 2.4rem;
+			margin-left: -5rem;
 			padding: 0 1.6rem;
+			color: $lightGrey;
+			font-size: 2.4rem;
 			line-height: 2.6rem;
 			background: none;
-			border: .2rem solid #fff;
+			border: .2rem solid $lightGrey;
 			border-radius: 1.6rem;
 			-webkit-transition: all 0.3s ease-out;
 			-moz-transition: all 0.3s ease-out;
@@ -224,6 +229,7 @@
 			-o-transition: all 0.3s ease-out;
 			transition: all 0.3s ease-out;
 			&:hover {
+				border-color: #fff;
 				background-color: #fff;
 				color: #242424;
 			}
