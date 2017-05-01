@@ -36,7 +36,7 @@ const reducers = (state, action) => {
 			break;
 
 		//	Prototype Reducers
-		case "PROTOTYPE_CHANGE_CATEGORY":
+		case "PROTOTYPE_CATEGORY":
 			state = {
 				...state,
 				NewTodoPrototype: state.NewTodoPrototype.map(prototype => prototype.id === '0' ?
@@ -44,6 +44,18 @@ const reducers = (state, action) => {
 						...prototype,
 						categoryId: action.categoryId,
 						currentStep: action.currentStep
+					} :
+					prototype
+				)
+			};
+			break;
+		case "PROTOTYPE_CONTENT":
+			state = {
+				...state,
+				NewTodoPrototype: state.NewTodoPrototype.map(prototype => prototype.id === '0' ?
+					{
+						...prototype,
+						content: action.content
 					} :
 					prototype
 				)
