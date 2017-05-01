@@ -183,7 +183,7 @@
 		margin-left: -45vw;
 		margin-top: -40vh;
 		border-radius: 4rem;
-		background-color: #242424;
+		background-color: $darkGrey;
 		z-index: 150;
 		.input {
 			padding: 1.6rem 2.4rem;
@@ -267,6 +267,94 @@
 				opacity: 1 !important;
 				visibility: visible !important;
 			}
+		}
+		.time {
+			.header {
+				height: 12rem;
+			}
+			.calendar {
+				width: 100%;
+				//	override react-infinite-calendar styles
+				.Cal__Container__root {
+					margin: auto;
+					font-family: $fontMain !important;
+					font-size: 2.2rem;
+					border-radius: 4rem;
+					-webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5);
+					-moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5);
+					box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5);
+					.Cal__Header__root {
+						border-radius: 4rem;
+						padding: .8rem 1.2rem;
+						min-height: 0;
+						height: 6.4rem;
+						.Cal__Header__year {
+							font-size: 2.4rem;
+							line-height: 1.8rem;
+						}
+						.Cal__Header__day {
+							font-size: 4rem;
+							line-height: 2.4rem;
+							height: 2.8rem;
+						}
+					}
+					.Cal__Container__wrapper {
+						.Cal__Weekdays__root {
+							.Cal__Weekdays__day {
+								font-size: 2.4rem;
+								padding: 1.2rem 0;
+								color: $paleGrey;
+							}
+						}
+						.Cal__Container__listWrapper {
+							border-radius: 0 0 2rem 2rem;
+							background-color: $paleGrey;
+							.Cal__MonthList__root {
+								.Cal__Month__row:first-child li {
+									box-shadow: 0 -1px 0 $lightGrey;
+								}
+							}
+							.Cal__Day__root {
+								background-color: $paleGrey;
+								border-color: $lightGrey !important;
+								font-size: 2.4rem;
+								&:before {
+									border-radius: 0;
+								}
+								.Cal__Day__selection {
+									width: 5.2rem;
+									height: 5.2rem;
+									margin-left: -2.6rem;
+									margin-top: -2.6rem;
+									border-radius: 0;
+									-webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5);
+									-moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5);
+									box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5);
+									line-height: 3.9rem;
+									.Cal__Day__month {
+										font-size: 1.8rem;
+										line-height: 0;
+										font-weight: 600;
+										padding-left: .2rem;
+									}
+									.Cal__Day__day {
+										font-size: 2.4rem;
+										font-weight: 600;
+									}
+								}
+							}
+							.Cal__Day__disabled {
+								color: #fff;
+								background-color: #999;
+							}
+							.Cal__Day__today {
+								color: $baseGrey !important;
+							}
+						}
+					}
+				}
+			}
+
 		}
 		button {
 			position: absolute;
