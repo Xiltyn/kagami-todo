@@ -1,11 +1,40 @@
 import * as React from 'react';
+import TimeKeeper from 'react-timekeeper';
 
 export default class TimeWheel extends React.Component<any, any> {
-	public render() {
+	constructor(props){
+		super(props);
+		this.state = {
+			time: '6:50 am',
+			displayTimepicker: true
+		};
+	}
+	protected handleTimeChange = (newTime) => {
+		this.setState({ time: newTime.formatted})
+	};
+
+	protected toggleTimekeeper(val){
+		this.setState({displayTimepicker: val})
+	};
+
+	render(){
 		return (
 			<div className="timeWheel">
-				<h1>TimeWheel</h1>
+				{this.state.displayTimepicker ?
+					<TimeKeeper
+						time={this.state.time}
+						onChange={this.handleTimeChange}
+						onDoneClick={() => {
+							this.toggleTimekeeper(false)
+						}}
+						switchToMinuteOnHourSelect={true}
+					/>
+					:
+					false
+				}
+				<span>Time is {this.state.time}</span>
+				<button onClick={() => this.toggleTimekeeper(true)}>OPEN</button>
 			</div>
-		);
-	};
+		)
+	}
 };
