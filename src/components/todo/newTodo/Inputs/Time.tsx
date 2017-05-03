@@ -1,10 +1,12 @@
 import * as React from 'react';
+import {connect} from 'react-redux';
 import Typist from 'react-typist';
 import NextStepButton from "../NextStepButton";
 import Calendar from "./Calendar";
 import TimeWheel from "./TimeWheel";
+import {prototypeTime} from "../../../../actions/prototypeActions";
 
-export default class Time extends React.Component<any, any> {
+class Time extends React.Component<any, any> {
 	constructor() {
 		super();
 
@@ -12,7 +14,8 @@ export default class Time extends React.Component<any, any> {
 			calendarIsOpened: true,
 			timeWheelIsOpened: false,
 			currentDate: null,
-			currentTime: null
+			currentTime: null,
+			timeConfirmed: false
 		}
 	}
 
@@ -23,12 +26,52 @@ export default class Time extends React.Component<any, any> {
 				calendarIsOpened: false,
 				timeWheelIsOpened: true
 			});
-		console.log(currentDate);
+	};
+
+	protected _setCurrentTime = (currentTime:string) => {
+		this.setState(
+			{
+				currentTime: currentTime,
+				timeWheelIsOpened: false
+			});
+	};
+
+	protected _editCurrentTime = () => {
+		this.setState(
+			{
+				calendarIsOpened: true,
+				timeConfirmed: false
+			}
+		)
+	};
+
+	protected _confirmCurrentTime = () => {
+		this.setState(
+			{
+				timeConfirmed: true
+			}
+		);
+		let currentSettings = this.state.currentDate + '@' + this.state.currentTime;
+
+		this.props.prototypeTime(currentSettings);
 	};
 
 	public render() {
-		let showCalendar = (this.state.calendarIsOpened ? <Calendar passDate={this._setCurrentDate}/> : null);
-		let showTimeWheel = (this.state.timeWheelIsOpened ? <TimeWheel/> : null);
+		let state = this.state;
+
+		let confirmation =
+			<div className="confirmation">
+				<h3>Your current selection</h3>
+				<h4>{state.currentDate}@{state.currentTime}</h4>
+				<button className="editButton" onClick={this._editCurrentTime}>Edit</button>
+				<button className="confirmButton" onClick={this._confirmCurrentTime}>Confirm</button>
+			</div>;
+
+
+		let showCalendar = (state.calendarIsOpened ? <Calendar passDate={this._setCurrentDate} /> : null);
+		let showTimeWheel = (state.timeWheelIsOpened ? <TimeWheel passTime={this._setCurrentTime}/> : null);
+		let showConfirmation = ( !state.timeWheelIsOpened && !state.calendarIsOpened ? confirmation : null );
+		let showNextStepButton = (state.timeConfirmed ? <NextStepButton /> : null  )
 
 		return (
 			<div className="input time">
@@ -45,8 +88,19 @@ export default class Time extends React.Component<any, any> {
 				</div>
 				{showCalendar}
 				{showTimeWheel}
-				<NextStepButton />
+				{showConfirmation}
+				{showNextStepButton}
 			</div>
 		)
 	}
 }
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		prototypeTime: (currentTime:string) => {
+			dispatch(prototypeTime(currentTime));
+		}
+	};
+};
+
+export default connect(null, mapDispatchToProps)(Time);

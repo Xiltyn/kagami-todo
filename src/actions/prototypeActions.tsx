@@ -24,3 +24,12 @@ export function prototypeContent(content:string) {
 	}
 
 }
+
+export function prototypeTime(currentTime:string) {
+
+	return {
+		type: "PROTOTYPE_TIME",
+		time: currentTime
+	}
+
+}

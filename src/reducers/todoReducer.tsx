@@ -61,6 +61,18 @@ const reducers = (state, action) => {
 				)
 			};
 			break;
+		case "PROTOTYPE_TIME":
+			state = {
+				...state,
+				NewTodoPrototype: state.NewTodoPrototype.map(prototype => prototype.id === '0' ?
+					{
+						...prototype,
+						time: action.time
+					} :
+					prototype
+				)
+			};
+			break;
 		case "PROTOTYPE_NEXT_STEP":
 			state = {
 				...state,

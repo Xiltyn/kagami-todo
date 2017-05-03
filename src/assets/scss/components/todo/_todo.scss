@@ -174,6 +174,31 @@
 	top: 0;
 	width: 100vw;
 	height: 100vh;
+	button {
+		position: absolute;
+		width: 10rem;
+		top: 60%;
+		left: 50%;
+		margin-top: 15rem;
+		margin-left: -5rem;
+		padding: 0 1.6rem;
+		color: $lightGrey;
+		font-size: 2.4rem;
+		line-height: 2.6rem;
+		background: none;
+		border: .2rem solid $lightGrey;
+		border-radius: 1.6rem;
+		-webkit-transition: all 0.3s ease-out;
+		-moz-transition: all 0.3s ease-out;
+		-ms-transition: all 0.3s ease-out;
+		-o-transition: all 0.3s ease-out;
+		transition: all 0.3s ease-out;
+		&:hover {
+			border-color: #fff;
+			background-color: #fff;
+			color: #242424;
+		}
+	}
 	.inputs-wrapper {
 		position: absolute;
 		width: 90vw;
@@ -249,6 +274,9 @@
 					color: $lightGreen;
 					opacity: 0;
 					visibility: hidden;
+					&:focus {
+						outline:0;
+					}
 					&:hover {
 						background-color: $lightGreen;
 						color: $darkGrey;
@@ -368,11 +396,14 @@
 					.react-timekeeper__clock-wrapper {
 						max-width: none;
 						background: $lightGrey !important;
+						text-align: initial !important;
+						padding: 18px 20px 14px !important;
 						.react-timekeeper__clock-animations {
 							background: $lightGrey !important;
 							max-width: none;
 							span {
 								font-size: 2.8rem !important;
+								line-height: 3rem !important;
 								color: $paleGrey !important;
 							}
 							svg {
@@ -430,30 +461,41 @@
 					}
 				}
 			}
-		}
-		button {
-			position: absolute;
-			width: 10rem;
-			top: 60%;
-			left: 50%;
-			margin-top: 15rem;
-			margin-left: -5rem;
-			padding: 0 1.6rem;
-			color: $lightGrey;
-			font-size: 2.4rem;
-			line-height: 2.6rem;
-			background: none;
-			border: .2rem solid $lightGrey;
-			border-radius: 1.6rem;
-			-webkit-transition: all 0.3s ease-out;
-			-moz-transition: all 0.3s ease-out;
-			-ms-transition: all 0.3s ease-out;
-			-o-transition: all 0.3s ease-out;
-			transition: all 0.3s ease-out;
-			&:hover {
-				border-color: #fff;
-				background-color: #fff;
-				color: #242424;
+			.confirmation {
+				$marginLeft: -4rem;
+				padding-top: 30%;
+				text-align: center;
+				button {
+					width: 8rem;
+					left: 50%;
+					top: 50%;
+					margin-top: 0;
+					margin-left: $marginLeft;
+				}
+				.confirmButton {
+					margin-left: $marginLeft - 4.8;
+					border-color: $lightGreen;
+					color: $lightGreen;
+					&:hover {
+						background-color: $lightGreen;
+						color: $darkGrey;
+					}
+					&:active {
+						box-shadow: inset 0px 0px 4px 0px $darkGreen;
+					}
+				}
+				.editButton {
+					margin-left: $marginLeft + 4.8;
+					border-color: $lightYellow;
+					color: $lightYellow;
+					&:hover {
+						background-color: $lightYellow;
+						color: $darkGrey;
+					}
+					&:active {
+						box-shadow: inset 0px 0px 4px 0px $darkYellow;
+					}
+				}
 			}
 		}
 	}

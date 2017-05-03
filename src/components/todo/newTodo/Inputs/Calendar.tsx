@@ -17,6 +17,11 @@ export default class Calendar extends React.Component<any, any> {
 		} else {
 			this.props.passDate(output)
 		}
+		return
+	};
+
+	protected confirmDate = () => {
+		this.props.confirmDate();
 	};
 
 	public render() {
@@ -46,6 +51,7 @@ export default class Calendar extends React.Component<any, any> {
 					}}
 					onSelect={this.passData}
 				/>
+				<button className="confirmDate" onClick={this.confirmDate}>Continue</button>
 			</div>
 		);
 	};

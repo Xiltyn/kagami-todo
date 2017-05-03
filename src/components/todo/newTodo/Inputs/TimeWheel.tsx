@@ -15,6 +15,8 @@ export default class TimeWheel extends React.Component<any, any> {
 
 	protected toggleTimekeeper(val){
 		this.setState({displayTimepicker: val})
+
+		this.props.passTime(this.state.time);
 	};
 
 	render(){
