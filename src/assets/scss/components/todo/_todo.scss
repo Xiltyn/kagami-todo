@@ -354,7 +354,82 @@
 					}
 				}
 			}
+			.timeWheel {
+				width: 100%;;
+				.react-timekeeper {
+					display: block !important;
+					margin: auto !important;
+					font-family: $fontMain !important;
+					background-color: $darkGrey !important;
+					div {
+						max-width: 200px;
+						background: $darkGrey !important;
+					}
+					.react-timekeeper__clock-wrapper {
+						max-width: none;
+						background: $lightGrey !important;
+						.react-timekeeper__clock-animations {
+							background: $lightGrey !important;
+							max-width: none;
+							span {
+								font-size: 2.8rem !important;
+								color: $paleGrey !important;
+							}
+							svg {
+								g {
+									circle {
+										fill: $baseGrey;
+									}
+									line {
+										stroke: $baseGreen;
+									}
+								}
+							}
+						}
+					}
+					.react-timekeeper-button-reset {
+						position: static;
+						width: auto;
+						border: none;
+						line-height: 1.6rem;
+						margin-top: .8rem;
+						&:hover {
+							background: $darkGrey !important;
+						}
+					}
+					.react-timekeeper__meridiem-toggle-wrapper {
+						max-width: none;
+						background: none !important;
+						padding: 0 .8rem !important;
+						position: relative;
+						.react-timekeeper-button-reset {
+							background-color: $lightGrey !important;
+							&:hover {
+								color: #fff !important;
+							}
+						}
+						.type_am {
+							margin-left: 0;
+						}
+						.type_pm {
 
+						}
+					}
+					span {
+						font-size: 2.4rem !important;
+						line-height: 2rem !important;
+						color: $paleGrey !important;
+						border: none !important;
+					}
+					.react-timekeeper__hour-select, .react-timekeeper__minute-select {
+						font-size: 4rem !important;
+						line-height: 3.2rem !important;
+					}
+					.react-timekeeper__minute-select {
+						color: $baseGreen !important;
+					}
+				}
+			}
 		}
 		button {
 			position: absolute;

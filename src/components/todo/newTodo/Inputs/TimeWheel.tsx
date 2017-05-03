@@ -32,8 +32,6 @@ export default class TimeWheel extends React.Component<any, any> {
 					:
 					false
 				}
-				<span>Time is {this.state.time}</span>
-				<button onClick={() => this.toggleTimekeeper(true)}>OPEN</button>
 			</div>
 		)
 	}

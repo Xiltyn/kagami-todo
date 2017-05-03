@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Typist from 'react-typist';
+import NextStepButton from "../NextStepButton";
 import Calendar from "./Calendar";
 import TimeWheel from "./TimeWheel";
 
@@ -44,6 +45,7 @@ export default class Time extends React.Component<any, any> {
 				</div>
 				{showCalendar}
 				{showTimeWheel}
+				<NextStepButton />
 			</div>
 		)
 	}
