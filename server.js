@@ -12,6 +12,7 @@ const publicPath = path.resolve(__dirname, 'build');
 // We point to our static assets
 app.use(express.static(publicPath));
 
+
 // We only want to run the workflow when not in production
 if (!isProduction) {
 
@@ -23,11 +24,11 @@ if (!isProduction) {
 
     // Any requests to localhost:3000/dev is proxied
     // to webpack-dev-server
-    app.all('/dev/*', function (req, res) {
-        proxy.web(req, res, {
-            target: 'http://localhost:8080'
-        });
-    });
+    //app.all('/dev/*', function (req, res) {
+    //    proxy.web(req, res, {
+    //        target: 'http://localhost:8080'
+    //    });
+    //});
 
 }
 

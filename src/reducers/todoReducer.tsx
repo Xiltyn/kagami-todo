@@ -32,7 +32,7 @@ const reducers = (state, action) => {
 					} :
 					todo
 				)
-			}
+			};
 			break;
 
 		//	Prototype Reducers

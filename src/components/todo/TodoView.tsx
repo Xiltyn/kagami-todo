@@ -7,6 +7,7 @@ import Header from '../header/Header';
 import Todo from './Todo';
 import NewTodoButton from "./newTodo/Button";
 import NewTodoInput from "./newTodo/Form";
+import { Link } from 'react-router-dom';
 
 export default class TodoView extends React.Component<any, any> {
 	constructor() {
@@ -22,7 +23,7 @@ export default class TodoView extends React.Component<any, any> {
 
 		tags.forEach(function (tag:any) {
 			result += '#' + tag + ' '
-		})
+		});
 
 		return result;
 	};
@@ -56,7 +57,9 @@ export default class TodoView extends React.Component<any, any> {
 							categoriesData={this.props.categoriesData}
 						/>
 				)}
-				<NewTodoButton openInput={this._switchTodoInput}/>
+				<Link to="/new-todo">
+					<NewTodoButton openInput={this._switchTodoInput}/>
+				</Link>
 				{activeInput}
 			</div>
 		)
